@@ -1,21 +1,20 @@
 import 'package:flutter/material.dart';
 
+import 'ui/screens/temperature_screen.dart';
 import 'ui/screens/welcome_screen.dart';
- 
+
 class TemperatureApp extends StatefulWidget {
   const TemperatureApp({super.key});
 
   @override
-  State<TemperatureApp> createState() {
-    return _TemperatureAppState();
-  }
+  State<TemperatureApp> createState() => _TemperatureAppState();
 }
 
 class _TemperatureAppState extends State<TemperatureApp> {
-  
-  @override
-  Widget build(context) {
+  bool _showTemperatureScreen = false;
 
+  @override
+  Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
         body: Container(
@@ -29,7 +28,15 @@ class _TemperatureAppState extends State<TemperatureApp> {
               end: Alignment.bottomRight,
             ),
           ),
-          child: const WelcomeScreen(),
+          child: _showTemperatureScreen
+              ? TemperatureScreen()
+              : WelcomeScreen(
+                  onStart: () {
+                    setState(() {
+                      _showTemperatureScreen = true;
+                    });
+                  },
+                ),
         ),
       ),
     );
