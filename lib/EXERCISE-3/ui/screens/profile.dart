@@ -33,9 +33,6 @@ class ProfileApp extends StatelessWidget {
                   width: 120,
                   height: 120,
                   fit: BoxFit.cover,
-                  errorBuilder: (context, error, stackTrace) {
-                    return const Icon(Icons.person, size: 64);
-                  },
                 ),
               ),
             ),
